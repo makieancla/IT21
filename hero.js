@@ -14,6 +14,7 @@ class Hero{
     getHealth(){
         return this.#health
     }
+
     showStats(){
         console.log("Name: "+ this.name);
         console.log("Health: "+ this.health);
@@ -22,17 +23,33 @@ class Hero{
     }
 
 }
+
 class Warrior extends Hero{
     useAbility(){
         console.log("$(this,name) user power strike");
     }
-} 
+}
 
-const hero1 = new Hero("Thorin",100,10);
-const hero2 = new Hero("Gandalf",100,8);
+class Mage extends Hero{
+    constructor(name,health,attack,mana){
+        super(name,health,attack);
+        this.mana = mana;
+    }
+    useAbility(){
+        console.log(`${this.name} casts Fireball!`);
+    }
 
+    showStats(){
+        super.showStats();
+        console.log("Mana: "+ this.mana);
+    }
 
-hero1.showStats();
-hero2.showStats();
+}
 
-thorin.useAbility();
+const Thorin = new Warrior("Thorin",100,10);
+const Gandalf = new Mage("Gandalf",100,8,50);
+
+//Thorin.showStats();
+//Thorin.useAbility();
+Gandalf.showStats();
+Gandalf.useAbility();
